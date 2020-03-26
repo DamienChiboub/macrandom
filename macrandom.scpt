@@ -8,7 +8,7 @@ set reset to "for i in {1..5};do wreset=$(echo -n $[RANDOM%10]$[RANDOM%10]$[RAND
 set bssid to "dvi-"
 
 -- POPUP variable wifi return the user entry, and variable btn return Arreter or Continuer, autoclose 30 seconds, hidden field
-set {wifi, btn} to {text returned, button returned} of (display dialog "Entrez la clef wifi" giving up after 3 default answer "" with icon stop buttons {"Arreter", "Continuer"} with hidden answer)
+set {wifi, btn} to {text returned, button returned} of (display dialog "Entrez la clef wifi" giving up after 30 default answer "" with icon stop buttons {"Arreter", "Continuer"} with hidden answer)
 -- ENDPOPUP
 
 if btn is "" then -- IF NO CLICK
