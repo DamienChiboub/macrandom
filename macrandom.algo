@@ -1,0 +1,54 @@
+Start
+Delay
+Voice announcement
+Alloc var reset, bssid, wifi, btn
+Popup prompt wifi key
+
+If btn is ""
+
+   If wifi is ""
+      Voice announcement
+      Popup autocloseable
+      End
+   Else
+      Exec bash command : reset var wifi 
+      Voice announcement
+      Popup autocloseable
+      End
+   End if
+
+Else
+
+   If btn is "Arreter"
+      Exec bash command : reset var wifi
+      Delay
+	  Voice announcement
+      Popup autocloseable
+      End
+   Else
+      Alloc var wcnx
+      Try
+        +A Exec bash commands : interface on/off, alloc random MAC		                  
+      On user auth cancel
+        Exec bash command : reset var wifi
+        Popup autocloseable
+        End
+      End try
+
+      Exec bash commande : wcnx wifi
+      Delay
+	  Exec bash commands : alloc var now, cmd, ip, router
+	  Exec bash commands : create temp file and resultat.log
+      Exec bash command : reset var wifi        
+      Alloc var connected
+      Exec ping command url binary return
+		 If connected is true
+	  		  Voice announcement
+			  Exec bash command add 1 in file
+	     Else 
+	  		  Voice announcement
+		      Exec bash command add 0 in file
+		 End if
+   End if
+End if
+End
