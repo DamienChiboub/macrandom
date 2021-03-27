@@ -14,6 +14,7 @@ Store the plist file in the following path, enter your USERNAME :
 Add/Remove to the computer start :
 
 launchctl load -w /Users/USERNAME/Library/LaunchAgents/com.macrandom.plist
+
 launchctl unload -w /Users/USERNAME/Library/LaunchAgents/com.macrandom.plist
 
 And it's done.
